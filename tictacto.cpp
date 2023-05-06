@@ -157,6 +157,20 @@ int com_put() {
   make_move(max_weight_row, max_weight_col, 2);
   return 0;
 }
+bool is_move_possible(int row, int col) {
+        if (board[row][col] == ' ') {
+            return true;
+        }
+        return false;
+    }
+
+ bool updateBoard(int row, int col, char symbol) {
+        if (is_move_possible(row, col)) {
+            board[row][col] = symbol;
+            return true;
+        }
+        return false;
+    }
 
 };
 
