@@ -221,7 +221,8 @@ int main() {
         }
         // 플레이어 2인 경우 게임 알고리즘으로부터 위치를 받아서 게임 보드에 업데이트
         else {
-            algorithm.updateBoard(board); // 게임 알고리즘에 현재 게임 보드 정보 전달
+            algorithm.updateBoard(row, col, player);
+ // 게임 알고리즘에 현재 게임 보드 정보 전달
             cout << "Player " << player << " (O) turn." << endl;
             cout << "Computer plays at " << algorithm.max_weight_row << ", " << algorithm.max_weight_col << endl;
             board.updateBoard(algorithm.max_weight_row, algorithm.max_weight_col); // 알고리즘이 선택한 위치에 말 놓기
