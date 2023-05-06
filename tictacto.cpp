@@ -206,3 +206,48 @@ class input {
     }
 };
 
+int main() {
+    int row, col; 
+    Board board; // 게임 보드 객체 생성
+    GameAlgorithm algorithm; // 게임 알고리즘 객체 생성
+    input input;
+
+    int player = 1; // 플레이어 1부터 시작
+    while(!algorithm.gameover()) { // 게임이 끝나지 않은 경우 반복
+        board.drawBoard(); // 현재 게임 보드 출력
+
+        // 플레이어 1인 경우 사용자에게 입력 받음
+        if (player == 1) {
+            cout << "Player " << player << " (X) turn." << endl;
+            board.getInput();
+        }
+        // 플레이어 2인 경우 게임 알고리즘으로부터 위치를 받아서 게임 보드에 업데이트
+        else {
+            algorithm.updateBoard(row, col, player);
+ // 게임 알고리즘에 현재 게임 보드 정보 전달
+            cout << "Player " << player << " (O) turn." << endl;
+            cout << "Computer plays at " << algorithm.max_weight_row << ", " << algorithm.max_weight_col << endl;
+            board.updateBoard(algorithm.max_weight_row, algorithm.max_weight_col); // 알고리즘이 선택한 위치에 말 놓기
+        }
+
+        // 다음 플레이어의 차례로 넘어가기
+        player = (player == 1) ? 2 : 1;
+
+        // 게임이 끝난 경우 승자 출력
+        if (algorithm.gameover()) {
+            board.drawBoard();
+            int winner = algorithm.winner();
+            if (winner == 1) {
+                cout << "Player 1 (X) wins!" << endl;
+            } else if (winner == 2) {
+                cout << "Player 2 (O) wins!" << endl;
+            } else {
+                cout << "It's a tie!" << endl;
+            }
+        }
+    }
+board.drawBoard();
+input.get_put();
+    return 0;
+}
+
