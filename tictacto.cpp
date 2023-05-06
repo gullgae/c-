@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
 
-class hBoard{
+class Board{
 private:
     char board[3][3];
 
 public:
-    hBoard() {
+    Board() {
         // 게임 보드 초기화
         for(int row=0; row<3; row++) {
             for(int col=0; col<3; col++) {
@@ -208,7 +208,7 @@ class input {
 
 int main() {
     int row, col; 
-    hBoard board; // 게임 보드 객체 생성
+    Board board; // 게임 보드 객체 생성
     GameAlgorithm algorithm; // 게임 알고리즘 객체 생성
 
     int player = 1; // 플레이어 1부터 시작
