@@ -107,13 +107,12 @@ public:
   return false;
 }
 
+
 bool is_move_possible(int row, int col) {
-  // 해당 위치에 말을 놓을 수 있는지 여부를 판단합니다.
-  if (board[row][col] == 0) {
+    if (row < 0 || row >= 3) return false;
+    if (col < 0 || col >= 3) return false;
+    if (board[row][col] != '-') return false;
     return true;
-  } else {
-    return false;
-  }
 }
 
 int winner() {
@@ -138,7 +137,7 @@ int winner() {
   if (board[0][2] == 2 && board[1][1] == 2 && board[2][0] == 2) return 2;
 
   // 비긴 경우
-  if (!is_move_possible()) return 0;
+  if (!is_move_possible(row,col)) return 0;
 
   // 게임이 아직 끝나지 않았음
   return -1;
