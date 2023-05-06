@@ -42,7 +42,8 @@ public:
 class GameAlgorithm {
 private:
     char board[3][3];
-
+    int col;
+    int row;
 public:
   int weight[3][3] = { {3,2,3},{2,4,2},{3,2,3} }; // 위치 별 가중치
   int max_weight = -1; // 가중치의 최댓값을 저장할 변수
@@ -137,10 +138,10 @@ int winner() {
   if (board[0][2] == 2 && board[1][1] == 2 && board[2][0] == 2) return 2;
 
   // 비긴 경우
-  if (!is_move_possible(row,col)) return 0;
+  //if (!is_move_possible(row, col)) return 0;
 
   // 게임이 아직 끝나지 않았음
-  return -1;
+  ///return -1;
 }
 
 void make_move(int row, int col, int player) {
