@@ -207,6 +207,7 @@ class input {
 };
 
 int main() {
+    int row, col; 
     hBoard board; // 게임 보드 객체 생성
     GameAlgorithm algorithm; // 게임 알고리즘 객체 생성
 
