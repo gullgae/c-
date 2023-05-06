@@ -206,38 +206,3 @@ class input {
     }
 };
 
-
-int main() {
-    Board board;
-    GameAlgorithm algorithm;
-    Input input;
-
-    bool gameOver = false;
-    char currentPlayer = 'X';
-
-    while (!gameOver) {
-        board.printBoard();
-
-        int move = input.getMove(currentPlayer);
-        while (!board.isValidMove(move)) {
-            cout << "Invalid move. Please try again." << endl;
-            move = input.getMove(currentPlayer);
-        }
-
-        board.makeMove(move, currentPlayer);
-
-        if (algorithm.checkWin(board, currentPlayer)) {
-            board.printBoard();
-            cout << currentPlayer << " wins!" << endl;
-            gameOver = true;
-        } else if (board.isFull()) {
-            board.printBoard();
-            cout << "It's a tie!" << endl;
-            gameOver = true;
-        } else {
-            currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
-        }
-    }
-
-    return 0;
-}
