@@ -245,7 +245,7 @@ int main() {
             }
         }
     }
-
+board.drawBoard();
     return 0;
 }
 
